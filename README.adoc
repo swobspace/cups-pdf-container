@@ -1,0 +1,34 @@
+= cups-pdf-container
+
+Building a container with Ubuntu and cups-pdf
+
+
+== Running cups-pdf
+
+.Starting the cupsd server
+[source,sh]
+----
+podman run -d -p 5150:515 -p 6310:631 --volume etc-cups:/etc/cups  \
+           --name cups-pdf ghcr.io/swobspace/cups-pdf:latest
+----
+
+.Changing password for admin (not persistent)
+[source,sh]
+----
+podman exec -it cups-pdf passwd admin
+----
+
+== Access to webinterface
+
+http://localhost:631
+
+Login with `admin` and your password from above.
+
+== Build and upload
+
+[source,sh]
+----
+podman build -t cups-pdf .
+podman tag cups-pdf ghcr.io/swobspace/cups-pdf:latest
+podman push ghcr.io/swobspace/cups-pdf:latest
+----
