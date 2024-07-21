@@ -24,6 +24,19 @@ http://localhost:631
 
 Login with `admin` and your password from above.
 
+NOTE: The password for `admin` is only valid while the container is running.
+Changes to the cups configuration are persistent, as they are stored in the 
+named volume etc-cups.
+
+== Testing cups
+
+.Testing CUPS server with lpstat
+----
+lpstat -h localhost:6310 -r  # Shows wether the CUPS server is running.
+lpstat -h localhost:6310 -v  # Shows the printers and what device they are attached to.
+lpstat -h localhost:6310 -t  #  Shows all status information.
+----
+
 == Build and upload
 
 [source,sh]

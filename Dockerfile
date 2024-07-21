@@ -23,7 +23,5 @@ COPY start-xinetd.sh start-xinetd.sh
 COPY start-cupsd.sh start-cupsd.sh
 COPY start-all.sh start-all.sh
 
-EXPOSE 631
-
 CMD ["./start-all.sh"]
 
